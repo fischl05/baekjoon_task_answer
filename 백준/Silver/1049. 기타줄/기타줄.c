@@ -6,19 +6,6 @@ typedef struct {
 	int one;
 }GUITAR;
 
-int compare_six(const void* mem1, const void* mem2) {
-	GUITAR* a = mem1;
-	GUITAR* b = mem2;
-	return a->six - b->six;
-}
-
-int compare_one(const void* mem1, const void* mem2) {
-	GUITAR* a = mem1;
-	GUITAR* b = mem2;
-	return a->one - b->one;
-
-}
-
 int main(void) {
 	int n, m;
 	int idx[2] = { 0 };
