@@ -22,16 +22,9 @@ int main(void) {
 	for (int i = 0; i < k; i++) {
 		int i, j, x, y;
 		scanf("%d %d %d %d", &i, &j, &y, &x);
-		//if(i == y) out += arr[i - 1][x] - arr[i - 1][j - 1];
-		//else out += arr[i - 1][m] - arr[i - 1][j - 1];
-		//while (i < y) {
-		//	if (i < y) out += arr[i++][m];
-		//	i++;
-		//}
 
-		for (int a = i - 1; a < y; a++) {
+		for (int a = i - 1; a < y; a++)
 			out += arr[a][x] - arr[a][j - 1];
-		}
 
 		printf("%d\n", out);
 		out = 0;
