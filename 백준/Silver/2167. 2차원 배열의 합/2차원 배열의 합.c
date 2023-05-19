@@ -30,5 +30,9 @@ int main(void) {
 		out = 0;
 	}
 
+	for (int i = 0; i < n; i++)
+		free(arr[i]);
+	free(arr);
+
 	return 0;
 }
