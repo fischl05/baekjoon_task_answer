@@ -103,5 +103,8 @@ int main(void) {
 	if (happy >= 0) printf("1");
 	else printf("0");
 
+	free(arr);
+	free(as);
+	free(de);
 	return 0;
 }
