@@ -4,32 +4,11 @@
 int arr[10000];
 int idx = -1;
 
-void push(int data) {
-	arr[++idx] = data;
-}
-
-int pop(void) {
-	if (idx >= 0) {
-		int rdata = arr[idx];
-		arr[idx--] = 0;
-		return rdata;
-	}
-	else return -1;
-}
-
-int size(void) {
-	return idx + 1;
-}
-
-int empty(void) {
-	if (idx >= 0) return 0;
-	else return 1;
-}
-
-int top(void) {
-	if (idx >= 0) return arr[idx];
-	else return -1;
-}
+void push(int data);
+int pop(void);
+int size(void);
+int empty(void);
+int top(void);
 
 int main(void) {
 	int n;
@@ -60,4 +39,31 @@ int main(void) {
 	}
 
 	return 0;
+}
+
+void push(int data) {
+	arr[++idx] = data;
+}
+
+int pop(void) {
+	if (idx >= 0) {
+		int rdata = arr[idx];
+		arr[idx--] = 0;
+		return rdata;
+	}
+	else return -1;
+}
+
+int size(void) {
+	return idx + 1;
+}
+
+int empty(void) {
+	if (idx >= 0) return 0;
+	else return 1;
+}
+
+int top(void) {
+	if (idx >= 0) return arr[idx];
+	else return -1;
 }
