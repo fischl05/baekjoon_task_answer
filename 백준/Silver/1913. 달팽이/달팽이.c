@@ -6,6 +6,7 @@ int main(void) {
 	int num, idxx = 0, idxy = 0;
 	int** arr = NULL;
 
+	// 위쪽, 오른쪽, 아래쪽, 왼쪽 순으로 좌표가 이동 그에 맞게 변수 저장
 	int dy[4] = { -1, 0, 1, 0 };
 	int dx[4] = { 0, 1, 0, -1 };
 
