@@ -1,37 +1,54 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-const int LM = 500000;
-int a[500005], t[500005], N, K, cnt, res;
+int sorted[500005];
+int goal, cnt = 0, num = -1;
 
-void mSort(int s, int e) {
-	if (s >= e) return;
-
-	int m = (s + e) / 2;
-	mSort(s, m);
-	mSort(m + 1, e);
-
-	int i = s, j = m + 1, k = s;
-	while (i <= m && j <= e) {
-		if (a[i] <= a[j]) t[k++] = a[i++];
-		else t[k++] = a[j++];
+void merge(int* arr, int start, int middle, int last) {
+	int i = start;
+	int j = middle + 1;
+	int k = start;
+	while (i <= middle && j <= last) {
+		if (arr[i] <= arr[j])
+			sorted[k++] = arr[i++];
+		else
+			sorted[k++] = arr[j++];
 	}
-
-	while (i <= m) t[k++] = a[i++];
-	while (j <= e) t[k++] = a[j++];
-
-	for (i = s; i <= e; ++i) {
-		a[i] = t[i];
-		if (++cnt == K) res = a[i];
+	if (i > middle)
+		for (int t = j; t <= last; t++)
+			sorted[k++] = arr[t];
+	else
+		for (int t = i; t <= middle; t++)
+			sorted[k++] = arr[t];
+	for (int t = start; t <= last; t++) {
+		arr[t] = sorted[t];
+		if (++cnt == goal) num = arr[t];
 	}
 }
 
-int main(){
-	scanf("%d %d", &N, &K);
-	for (int i = 0; i < N; ++i) scanf("%d", &a[i]);
+void merge_sort(int* arr, int start, int last) {
+	if (start < last) {
+		int middle = (start + last) / 2;
+		merge_sort(arr, start, middle);
+		merge_sort(arr, middle + 1, last);
+		merge(arr, start, middle, last);
+	}
+}
 
-	res = -1;
-	mSort(0, N - 1);
+int main(void) {
+	int n;
+	int* arr = NULL;
 
-	printf("%d\n", res);
+	scanf("%d %d", &n, &goal);
+
+	arr = (int*)calloc(n, sizeof(int));
+	for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
+
+	num = -1;
+	merge_sort(arr, 0, n - 1);
+
+	printf("%d", num);
+
+	free(arr);
 	return 0;
 }
