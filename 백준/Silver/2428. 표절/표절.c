@@ -49,12 +49,15 @@ int main(void) {
 		int idx = i;
 		while (low <= high) {
 			int mid = (low + high) / 2;
+			//작은 파일의 크기가 큰 파일의 0.9배보다 클 경우 검사
+			//오름차순으로 정렬되어 있기에 arr[i]의 값보다 arr[mid]의 값이 무조건 크기 때문에 idx의 최대 값을 구하면 그의 왼쪽에 있는 값도 모두 성립
 			if (arr[i] * 10 >= arr[mid] * 9) {
 				low = mid + 1;
 				if (mid > idx) idx = mid;
 			}
 			else high = mid - 1;
 		}
+		// i밑에 있는 값은 애초에 값이 작은 것이라서 빼주기
 		out += idx - i;
 	}
 	printf("%lld", out);
