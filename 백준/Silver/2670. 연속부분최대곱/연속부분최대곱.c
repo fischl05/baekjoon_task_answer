@@ -1,12 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-int compare(const void* mem1, const void* mem2) {
-	double* a = mem1;
-	double* b = mem2;
-	if (*a < *b) return 1;
-	else return 0;
-}
 
 double dp[10001], arr[10001];
 
