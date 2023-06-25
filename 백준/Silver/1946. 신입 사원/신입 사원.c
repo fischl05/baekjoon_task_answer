@@ -38,7 +38,7 @@ int main(void) {
 	scanf("%d", &re);
 	
 	while (re--){
-		int n, best_second, out = 1;
+		int n, idx = 0, out = 1;
 		PERSON* arr = NULL;
 
 		scanf("%d", &n);
@@ -48,15 +48,15 @@ int main(void) {
 			scanf("%d %d", &arr[i].first, &arr[i].second);
 
 		merge_sort(arr, 0, n - 1);
-		best_second = arr[0].second;
 
-		for (int i = 1; i < n; i++) {
-			if (arr[i].second < best_second) {
+		for (int i = 1; i < n; i++)
+			if (arr[i].second < arr[idx].second) {
 				out++;
-				best_second = arr[i].second;
+				idx = i;
 			}
-		}
+
 		printf("%d\n", out);
+		free(arr);
 	}
 
 	return 0;
