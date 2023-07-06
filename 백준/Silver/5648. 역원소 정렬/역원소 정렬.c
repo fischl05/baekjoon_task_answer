@@ -70,5 +70,6 @@ int main(void) {
 	for (int i = 0; i < n; i++)
 		printf("%lld\n", arr[i]);
 
+	free(arr);
 	return 0;
 }
